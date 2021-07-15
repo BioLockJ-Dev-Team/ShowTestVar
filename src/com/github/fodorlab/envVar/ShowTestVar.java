@@ -1,4 +1,4 @@
-package envVar;
+package com.github.fodorlab.envVar;
 import java.io.File;
 import java.io.FileWriter;
 import biolockj.Config;

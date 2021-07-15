@@ -1,4 +1,4 @@
-package envVar;
+package com.github.fodorlab.envVar;
 
 public class ShowShepVar extends ShowTestVar {
 
