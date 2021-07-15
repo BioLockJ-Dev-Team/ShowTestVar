@@ -37,7 +37,9 @@ biolockj-api listModules --external-modules ./dist
 ```
 The output list should include "com.github.fodorlab.envVar.ShowTestVar".
 
-Run one or more demo files.
+Run a demo pipeline.
 ```
-biolockj --external-modules ./dist ./demo/printBlj.config
+biolockj --external-modules $PWD/dist ./demo/printBlj.config
 ```
+
+See more in the demo folder.
