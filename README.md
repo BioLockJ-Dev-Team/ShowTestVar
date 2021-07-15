@@ -45,6 +45,8 @@ cd ShowTestVar
 ant
 ```
 
+_If you encounter build difficulties, try using the docker build process below._
+
 Test that BioLockJ recognizes the module.
 ```
 biolockj-api listModules --external-modules ./dist
@@ -57,3 +59,15 @@ biolockj --external-modules $PWD/dist ./demo/printBlj.config
 ```
 
 See more in the demo folder.
+
+### Build the project and its documentation using docker
+
+```
+docker run --rm \
+  -v $PWD:/project \
+  -v $BLJ:/BioLockJ \
+  -e BLJ=/BioLockJ \
+  -w /project \
+  biolockjdevteam/build_and_deploy \
+  ant userguide
+```
