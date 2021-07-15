@@ -12,7 +12,7 @@
     <property name="BLJ" value="../BioLockJ"/>
 
     <!-- This is the same regardless of how ${BLJ} was set. -->
-    <property name="BLJ.JAR" value="${env.BLJ}/dist/BioLockJ.jar"/>
+    <property name="BLJ.JAR" value="${BLJ}/dist/BioLockJ.jar"/>
 
 	<path id="lib.path">
 		<fileset dir="${BLJ}"/>
@@ -20,6 +20,7 @@
 
     <target name="blj">
         <echo message="BLJ: ${BLJ}"/>
+	<echo message="BLJ.Jar: ${BLJ.JAR}"/>
         <available file="${BLJ.JAR}" property="blj.jar.present"/>
     </target>
 
