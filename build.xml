@@ -44,7 +44,7 @@
         <mkdir dir="mkdocs/docs"/>
         <java classpath="${BLJ.JAR}:dist/${ant.project.name}.jar" classname="biolockj.api.BuildDocs">
             <arg value="mkdocs/docs"/>
-            <arg value="envVar"/>
+            <arg value="com"/>
         </java>
         <move file="mkdocs/docs/all-modules.md" tofile="mkdocs/docs/index.md" />
     </target>

@@ -1,6 +1,6 @@
 # ShowShepVar
 Add to module run order:                    
-`#BioModule envVar.ShowShepVar`
+`#BioModule com.github.fodorlab.envVar.ShowShepVar`
 
 ## Description 
 This module gets the value of the environment variable "SHEP" and prints its value to the log and an output file.
