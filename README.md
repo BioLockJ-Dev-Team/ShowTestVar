@@ -1,21 +1,21 @@
-# ShowTestVar
-An example of a BioLockJ module. It prints the current value of an environment variable.
 
-See the [documentation for the modules in this project](mkdocs/docs/index.md).
+## Before you begin
 
-## This is a template
+This project is an example of a [BioLockJ](https://github.com/BioLockJ-Dev-Team/BioLockJ) module. 
 
-This project has all the components we typically expect to see for a third-party BioLockJ module.
+To build it, or even just to use it, you must have successfully installed and tested [BioLockJ](https://github.com/BioLockJ-Dev-Team/BioLockJ).
+```
+biolockj --version
+biolockj ${BLJ}/templates/myFirstPipeline/myFirstPipeline.properties
+```
 
-Notice that this repository is a template repository. To make your own BioLockJ module, you can fork this repository to copy its files and structure, test the build process, and modify from there to make your own module.  
-
-Run through the instructions below to make sure your system is set up correctly to run BioLockJ and use external modules.  
-
-In your own copy, delete everything from "This is a template" in this README.
+For more information about how to create BioLockJ modules and for other examples, see [the BioLockJ external modules resource repository](https://github.com/BioLockJ-Dev-Team/blj_ext_modules)
 
 ### Use this module
 
-Download the jar file to your external modules folder (`mods`).
+See the [userguide pages for the modules in this project](mkdocs/docs/index.md).
+
+Download the jar file to your external modules folder (`mods`), which you point to with the `--external-modules` argument.  In your config file, reference the ShowBljVars module in your module run order using the `#BioModule` keyword.
 
 Minimalist example:
 ```
@@ -28,7 +28,7 @@ wget https://github.com/BioLockJ-Dev-Team/ShowTestVar/releases/download/0.0.0/Sh
 cd ../demo
 wget https://raw.githubusercontent.com/BioLockJ-Dev-Team/ShowTestVar/main/demo/printBlj.config
 cd ..
-biolockj --external-modules ./mods ./demo/printBlj.config
+biolockj --external-modules $PWD/mods ./demo/printBlj.config
 ```
 The example above will create a minimalist pipeline deomonstrating the use of the ShowBljVars module from the ShowTestVar project.  
 
@@ -58,10 +58,20 @@ Run a demo pipeline.
 biolockj --external-modules $PWD/dist ./demo/printBlj.config
 ```
 
-See more in the demo folder.
+Check the demo folder for more examples.
 
 ### Build the project and its documentation using docker
+Confirm docker is running:
+```
+docker run --rm hello-world
+```
 
+Note: the code block below references this project directory as `$PWD`.
+```
+cd ShowTestVar
+```
+
+This is the standard build process for BioLockJ modules.
 ```
 docker run --rm \
   -v $PWD:/project \
@@ -71,3 +81,17 @@ docker run --rm \
   biolockjdevteam/build_and_deploy \
   ant userguide
 ```
+
+This process produces the jar file and the standardized [userguide pages](mkdocs/docs/index.md) for the modules in this project.
+
+-------
+
+## This is a template
+
+This project has all the components we typically expect to see for a third-party BioLockJ module.
+
+Notice that this repository is a template repository. To make your own BioLockJ module, you can copy this reposiotry to start from its files and structure, test the build process, and modify from there to make your own module.  
+
+Run through the instructions below to make sure your system is set up correctly to run BioLockJ and use external modules.  
+
+In your own copy of this README, delete the section "This is a template", and update other instructions to reference your own repo.
