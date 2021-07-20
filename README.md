@@ -49,7 +49,7 @@ _If you encounter build difficulties, try using the docker build process below._
 
 Test that BioLockJ recognizes the module.
 ```
-biolockj-api listModules --external-modules ./dist
+biolockj-api listModules --external-modules $PWD/dist
 ```
 The output list should include "com.github.fodorlab.envVar.ShowTestVar".
 
