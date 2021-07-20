@@ -11,7 +11,7 @@ biolockj ${BLJ}/templates/myFirstPipeline/myFirstPipeline.properties
 
 For more information about how to create BioLockJ modules and for other examples, see [the BioLockJ external modules resource repository](https://github.com/BioLockJ-Dev-Team/blj_ext_modules)
 
-### Use this module
+### Use this module (the latest release)
 
 See the [userguide pages for the modules in this project](mkdocs/docs/index.md).
 
@@ -19,28 +19,31 @@ Download the jar file to your external modules folder (`mods`), which you point 
 
 Minimalist example:
 ```
-mkdir ShowTestVar_Example
-cd ShowTestVar_Example
-mkdir mods
-mkdir demo
-cd mods
-wget https://raw.githubusercontent.com/BioLockJ-Dev-Team/ShowTestVar/main/dist/ShowTestVar.jar
-cd ../demo
-wget https://raw.githubusercontent.com/BioLockJ-Dev-Team/ShowTestVar/main/demo/printBlj.config
-cd ..
-biolockj --external-modules $PWD/mods ./demo/printBlj.config
+PROJ=ShowTestVar
+URL=https://github.com/BioLockJ-Dev-Team/ShowTestVar/releases/latest
+CONFIG=printBlj.config
+
+mkdir ${PROJ}_Example
+cd ${PROJ}_Example
+wget $URL/${PROJ}.jar -P $PWD/mods
+wget $URL/demo.zip
+unzip demo.zip && rm demo.zip 
+biolockj --external-modules $PWD/mods ./demo/$CONFIG
 ```
 The example above will create a minimalist pipeline deomonstrating the use of the ShowBljVars module from the ShowTestVar project.  
 
 Add the `#BioModule` line for the ShowBljVars module to any other pipeline.
 
-### Build this module
+### Build this module from the latest source code
 
 The build file references the BioLockJ project by assuming it is a peer folder.
 ```
 cd $BLJ
 cd ..
-git clone https://github.com/BioLockJ-Dev-Team/ShowTestVar.git
+wget https://github.com/BioLockJ-Dev-Team/ShowTestVar/archive/refs/heads/main.zip 
+unzip main.zip && rm main.zip && mv ShowTestVar-main ShowTestVar
+# alternatively, use git:
+# git clone https://github.com/BioLockJ-Dev-Team/ShowTestVar.git
 cd ShowTestVar
 ant
 ```
@@ -95,3 +98,43 @@ Notice that this repository is a template repository. To make your own BioLockJ 
 Run through the instructions below to make sure your system is set up correctly to run BioLockJ and use external modules.  
 
 In your own copy of this README, delete the section "This is a template", and update other instructions to reference your own repo.
+
+
+#### Pre-release instructions
+
+By convention, a release is a static point, a version.  For reproducible results, use the the latest release of all software components.
+
+Sometimes you may want to allow your collaborators to test your module without having to build it.  This is often the case leading up to a release.
+
+Minimalist example:
+```
+PROJ=ShowTestVar
+URL=https://raw.githubusercontent.com/BioLockJ-Dev-Team/ShowTestVar/main
+CONFIG=printBlj.config
+
+mkdir ${PROJ}_demo
+cd ${PROJ}_demo
+wget ${URL}/dist/${PROJ}.jar -P $PWD/mods
+wget ${URL}/demo/printBlj.config -P $PWD/demo
+biolockj --external-modules $PWD/mods ./demo/${CONFIG}
+```
+
+#### Release process
+
+Build your jar file using the ant build process:
+```
+cd ShowTestVar
+ant jar
+```
+
+Compress your demo folder using:
+```
+cd ShowTestVar
+zip -r -X demo.zip demo
+```
+
+Create a release in github: go to tags, find option to create a new release.  
+Upload the jar file and the demo.zip file as release artifacts.
+
+Update the instructions in your README accordingly.
+Sometimes you may reference a specific release, but most documentation will reference the "latest" one using the `https://github.com/<user>/<repo>/releases/latest` format.
