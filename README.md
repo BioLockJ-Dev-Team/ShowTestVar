@@ -36,14 +36,21 @@ Add the `#BioModule` line for the ShowBljVars module to any other pipeline.
 
 ### Build this module from the latest source code
 
-The build file references the BioLockJ project by assuming it is a peer folder.
+The build file references the BioLockJ project by assuming it is a peer folder.  If you don't want to use this relative-path-dependency, you can edit the build.xml file to reference the `$BLJ` variable instead, see commented lines in the build.xml. 
 ```
 cd $BLJ
 cd ..
 wget https://github.com/BioLockJ-Dev-Team/ShowTestVar/archive/refs/heads/main.zip 
 unzip main.zip && rm main.zip && mv ShowTestVar-main ShowTestVar
-# alternatively, use git:
+```
+
+Alternatively, use git:
+```
 # git clone https://github.com/BioLockJ-Dev-Team/ShowTestVar.git
+```
+
+The essential bit:
+```
 cd ShowTestVar
 ant
 ```
