@@ -20,7 +20,7 @@ Download the jar file to your external modules folder (`mods`), which you point 
 Minimalist example:
 ```
 PROJ=ShowTestVar
-URL=https://github.com/BioLockJ-Dev-Team/ShowTestVar/releases/latest
+URL=https://github.com/BioLockJ-Dev-Team/ShowTestVar/releases/latest/download
 CONFIG=printBlj.config
 
 mkdir ${PROJ}_Example
