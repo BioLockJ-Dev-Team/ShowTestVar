@@ -2,14 +2,14 @@
 	
     <!-- Use this to reference the BioLockJ from any location. -->
     <!-- Requires that variable "BLJ" exists in your system environment. -->
-    <!-- 
     <property environment="env"/>
     <property name="BLJ" value="${env.BLJ}"/>
-    -->
 
     <!-- Use this to reference the BioLockJ from a peer directory -->
     <!-- Requires that this project folder is stored in the same dir as the BioLockJ folder. -->
+    <!-- 
     <property name="BLJ" value="../BioLockJ"/>
+    -->
 
     <!-- This is the same regardless of how ${BLJ} was set. -->
     <property name="BLJ.JAR" value="${BLJ}/dist/BioLockJ.jar"/>
