@@ -30,11 +30,11 @@ wget $URL/demo.zip
 unzip demo.zip && rm demo.zip 
 biolockj --external-modules $PWD/mods ./demo/$CONFIG
 ```
-The example above will create a minimalist pipeline deomonstrating the use of the ShowBljVars module from the ShowTestVar project.  
+The example above will create a minimalist pipeline demonstrating the use of the ShowBljVars module from the ShowTestVar project.  
 
 Add the `#BioModule` line for the ShowBljVars module to any other pipeline.
 
-### Build this module from the latest source code
+### Build this project from the latest source code
 
 Download the source code:
 ```
@@ -92,6 +92,15 @@ docker run --rm \
 ```
 
 This process produces the jar file and the standardized [userguide pages](mkdocs/docs/index.md) for the modules in this project.
+
+**IF** you are also building BioLockJ from source code, use the same docker image to build the BioLockJ project before building this project:
+```
+# git clone https://github.com/BioLockJ-Dev-Team/BioLockJ.git
+# cd BioLockJ
+# BLJ=$PWD
+docker run --rm -v ${BLJ}:/biolockj biolockjdevteam/build_and_deploy
+```
+Using the same docker image for both builds reduces the chances of conflicts arising from different java/host versions.
 
 -------
 
